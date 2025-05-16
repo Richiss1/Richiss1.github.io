@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Fútbol Total</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Íconos -->
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #00bcd4;
+            --primary-dark: #008fa3;
+            --dark: #111;
+            --darker: #000;
+            --light: #fff;
+            --gray: #ccc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--dark), #222);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 3em;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            border-top: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            padding: 16px 30px;
+            display: inline-block;
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary);
+            background-color: rgba(0, 188, 212, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: url('baggio.jpg') center/cover no-repeat;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 3.5em;
+            margin: 0 0 20px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 60px 5%;
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .main {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .main h2 {
+            border-left: 6px solid var(--primary);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 2em;
+            position: relative;
+        }
+
+        .main h2::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--primary), transparent);
+            margin-top: 10px;
+        }
+
+        .main p {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            text-align: justify;
+        }
+
+        .image-container {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 30px 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-center {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .image-container:hover .image-center {
+            transform: scale(1.02);
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(17, 17, 17, 0.7);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            align-self: flex-start;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar img:hover {
+            transform: scale(1.03);
+        }
+
+        .sidebar h3 {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            color: var(--primary);
+        }
+
+        .sidebar p {
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .article-block {
+            margin-bottom: 40px;
+        }
+
+        footer {
+            background: linear-gradient(to right, var(--dark), #222);
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            font-size: 0.9em;
+            position: relative;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+        }
+
+        .boton {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: var(--darker);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
+            text-align: center;
+            width: 100%;
+        }
+
+        .boton:hover {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 188, 212, 0.4);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: #888;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .hero h2 {
+                font-size: 2.5em;
+            }
+            
+            .sidebar {
+                position: static;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Fútbol Total</h1>
+    </header>
+
+    <nav>
+        <a href="#" class="active">Daniela Fernanda Hernández Hernández</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>¡Pasión por el fútbol!</h2>
+            <p>Explora el fascinante mundo del deporte rey, con las últimas noticias, análisis y momentos históricos que han marcado a generaciones</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="main">
+            <h2>¿Quién es Cristiano Ronaldo?</h2>
+            <p>
+                Cristiano Ronaldo dos Santos Aveiro, nacido el 5 de febrero de 1985 en Funchal, Madeira (Portugal), es uno de los futbolistas más grandes de todos los tiempos. Con una trayectoria brillante en clubes como el Manchester United, Real Madrid, Juventus y Al-Nassr, CR7 ha sido sinónimo de disciplina, ambición y goles.
+            </p>
+            <p>
+                Ganador de 5 Balones de Oro y múltiples Champions League, Cristiano es una leyenda viva del deporte. Con más de 800 goles oficiales, su legado trasciende generaciones. También ha sido el líder indiscutible de la selección portuguesa, llevándola a ganar la Eurocopa en 2016.
+            </p>
+            
+            <div class="image-container">
+                <img src="Cris.jpg" alt="Cristiano Ronaldo" class="image-center">
+            </div>
+
+            <h2>¿Y Cruz Azul?</h2>
+            <p>
+                Cruz Azul es uno de los clubes más históricos y queridos del fútbol mexicano. Fundado en 1927, ha vivido épocas de gloria, drama y redención. Luego de años de sequía, en 2021 rompió la maldición y conquistó el título de Liga MX, devolviendo la alegría a millones de aficionados.
+            </p>
+            <p>
+                El club representa lucha, entrega y pasión. Su afición, una de las más fieles del país, ha demostrado que el amor por los colores va más allá de los resultados.
+            </p>
+            <p>
+                Ahora el club se enfrentará al América en semifinales buscando la décima, en un clásico que llama la atención de todos los aficionados al fútbol mexicano.
+            </p>
+            
+            <div class="image-container">
+                <img src="Cruz.jpg" alt="Cruz Azul" class="image-center">
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="article-block">
+                <img src="Lamine.jpeg" alt="Lamine Yamal">
+                <h3>Barcelona campeón de Liga</h3>
+                <p>El FC Barcelona gana el partido y el título de Liga al derrotar al Espanyol de la mano de Lamine Yamal, la joven promesa que ha revolucionado el fútbol mundial.</p>
+            </div>
+
+            <div class="article-block">
+                <img src="xabi.jpeg" alt="Xabi Alonso">
+                <h3>Xabi Alonso al Madrid</h3>
+                <p>Xabi Alonso dirigirá al Real Madrid desde el 1 de junio, es decir, estará al frente del equipo en el Mundial de Clubes tras su exitoso paso por el Bayer Leverkusen.</p>
+            </div>
+            
+            <a class="boton" href="https://www.espn.com">
+                <i class="fas fa-newspaper"></i> Ver más artículos
+            </a><br><br><br><br>
+            <a class="boton" href="Index.html">
+              <i class="fas fa-newspaper"></i> Menu
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

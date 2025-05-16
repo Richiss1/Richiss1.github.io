@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    :root {
+      --bg-color: #fafafa;
+      --text-color: #333;
+      --accent: #6366f1;
+      --shadow: rgba(0, 0, 0, 0.05);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 500px;
+      width: 100%;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px var(--shadow);
+      padding: 40px;
+      text-align: center;
+    }
+    
+    .logo {
+      color: var(--accent);
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+    }
+    
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 14px 20px;
+      background-color: #f5f5f7;
+      border-radius: 12px;
+      color: var(--text-color);
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    .nav-link:hover {
+      background-color: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+    }
+    
+    .nav-link i {
+      margin-right: 12px;
+      width: 24px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    
+    footer {
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <i class="fas fa-bolt"></i>
+    </div>
+    
+    <h1>Bienvenido</h1>
+    <p>Selecciona una de las siguientes opciones para continuar</p>
+    <p style="font-style: italic; color: var(--accent); margin-bottom: 20px;">Daniela Fernanda Hernández Hernández</p>
+    
+    <div class="nav-links">
+      <a href="pagina1.html" class="nav-link">
+        <i class="fas fa-car"></i>
+        <span>Industria Automotriz</span>
+      </a>
+      <a href="pagina 2.html" class="nav-link">
+        <i class="fas fa-running"></i>
+        <span>Deportes</span>
+      </a>
+      <a href="pagina4.html" class="nav-link">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Tienda</span>
+      </a>
+      <a href="pagina 3.html" class="nav-link">
+        <i class="fas fa-car-side"></i>
+        <span>Autos</span>
+      </a>
+    </div>
+    
+  </div>
+</body>
+</html>
